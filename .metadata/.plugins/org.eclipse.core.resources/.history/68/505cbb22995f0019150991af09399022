@@ -1,0 +1,15 @@
+package livro;
+
+public class Conta {
+	
+	String nome;
+	int numero;
+	String agencia;
+	double saldo;
+	String dataAbertura;
+	
+	void saca (double valor) {
+		double novoValor = this.saldo - valor;
+		valor = novoValor;
+	}
+}

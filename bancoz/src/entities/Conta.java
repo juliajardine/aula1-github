@@ -1,0 +1,63 @@
+package entities;
+
+public class Conta {
+	
+	private int numero;
+	private String titular;
+	private double saldo;
+	
+	public Conta(int numero, String titular, double valor) {
+		this.numero = numero;
+		this.titular = titular;
+		deposita(valor);
+	}
+	
+	public Conta(int numero, String titular) {
+		this.numero = numero;
+		this.titular = titular;
+	}
+	
+	public void deposita(double valor) {
+		saldo += valor;
+	}
+	
+	public double saque(double valor) {
+		double taxa = 5;
+		if(this.getSaldo() < 0) {
+			System.out.println("Saldo insuficiente para realizar esta ação. Seu saldo é de: " + this.getSaldo());
+		} else if (valor + taxa > this.getSaldo()) {
+			System.out.println("Saldo insuficiente para realizar esta ação. Seu saldo é de: " + this.getSaldo());
+		} else {
+			double novoSaldo = this.getSaldo() - (valor + taxa);
+			this.saldo = novoSaldo;
+			System.out.println("Saque realizado com sucesso! Seu saldo atualizado é de: " + this.saldo);
+		}
+		return saldo;
+	}
+	
+	public String getTitular() {
+		return titular;
+	}
+	
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	
+	public double getSaldo() {
+		return saldo;
+	}
+	
+	public String toString() {
+		return "Conta "
+				+ numero
+				+ ", Titular: "
+				+ titular
+				+ ", Saldo: R$"
+				+ String.format("%.2f", saldo);
+	}
+ 	
+}
